@@ -10,8 +10,12 @@
       var idx = location.href;
       if(~idx.indexOf("?")){
             location.href = ("https://ent.ry-warp.repl.co" + idx.slice(idx.replace("//", "").indexOf("/") + 2));
+      }else if(~idx.indexOf("#")){
+            location.href = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
       }else{
-            location.href = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 2));
+            var p = document.createElement("p");
+            p.innerHTML = "잘못된 주소입니다. <a href=\"#61fca48e520da6002c529b0e\">https://entrywarp.github.io#61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
+            document.body.appendChild(p);
       }
   </script>
 </body>
