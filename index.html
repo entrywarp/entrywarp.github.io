@@ -7,7 +7,12 @@
 </head>
 <body>
   <script>
-      location.href = ("https://ent.ry-warp.repl.co" + location.href.slice(location.href.replace("//", "").indexOf("/") + 2));
+      var idx = locatin.href;
+      if(~idx.indexOf("?")){
+            location.href = ("https://ent.ry-warp.repl.co" + idx.slice(idx.replace("//", "").indexOf("/") + 2));
+      }else{
+            location.href = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 2));
+      }
   </script>
 </body>
 </html>
