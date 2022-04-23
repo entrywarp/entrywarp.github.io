@@ -17,6 +17,10 @@
             var p = document.createElement("p");
             p.innerHTML = "잘못된 주소입니다. <a href=\"?id=61fca48e520da6002c529b0e\">https://entrywarp.github.io?id=61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
             document.body.appendChild(p);
+            var anchor = document.querySelector("a");
+            anchor.onclick = function(){
+                 location.reload();
+            };
       }
       if(url != null){
             var frameset = document.createElement("frameset");
