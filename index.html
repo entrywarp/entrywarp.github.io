@@ -9,13 +9,13 @@
   <script>
       var idx = location.href;
       var url = null;
-      if(~idx.indexOf("?")){
-            url = ("https://ent.ry-warp.repl.co" + idx.slice(idx.replace("//", "").indexOf("/") + 2));
+      if(~idx.indexOf("?id=")){
+            url = ("https://ent.ry-warp.repl.co/?id=" + idx.slice(idx.replace("//", "").indexOf("/?id=") + 7));
       }else if(~idx.indexOf("#")){
-            url = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
+            url = ("https://ent.ry-warp.repl.co/?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
       }else{
             var p = document.createElement("p");
-            p.innerHTML = "잘못된 주소입니다. <a href=\"#61fca48e520da6002c529b0e\">https://entrywarp.github.io#61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
+            p.innerHTML = "잘못된 주소입니다. <a href=\"javascript:location.href=location.href+'#61fca48e520da6002c529b0e';\">https://entrywarp.github.io#61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
             document.body.appendChild(p);
       }
       if(url != null){
@@ -27,7 +27,7 @@
             frame.setAttribute("scrolling", "auto");
             frame.setAttribute("noresize", "auto");
             frameset.appendChild(frame);
-            document.body.appendchild(frameset);
+            document.body.appendChild(frameset);
       }
   </script>
 </body>
