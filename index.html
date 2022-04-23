@@ -8,14 +8,26 @@
 <body>
   <script>
       var idx = location.href;
+      var url = null;
       if(~idx.indexOf("?")){
-            location.href = ("https://ent.ry-warp.repl.co" + idx.slice(idx.replace("//", "").indexOf("/") + 2));
+            url = ("https://ent.ry-warp.repl.co" + idx.slice(idx.replace("//", "").indexOf("/") + 2));
       }else if(~idx.indexOf("#")){
-            location.href = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
+            url = ("https://ent.ry-warp.repl.co?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
       }else{
             var p = document.createElement("p");
             p.innerHTML = "잘못된 주소입니다. <a href=\"#61fca48e520da6002c529b0e\">https://entrywarp.github.io#61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
             document.body.appendChild(p);
+      }
+      if(url != null){
+            var frameset = document.createElement("frameset");
+            frameset.setAttribute("rows", "*");
+            var frame = document.createElement("frame");
+            frame.setAttribute("frameborder", "0");
+            frame.setAttribute("src", url);
+            frame.setAttribute("scrolling", "auto");
+            frame.setAttribute("noresize", "auto");
+            frameset.appendChild(frame);
+            document.body.appendchild(frameset);
       }
   </script>
 </body>
