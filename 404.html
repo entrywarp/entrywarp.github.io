@@ -19,10 +19,10 @@
         };
 
         var getPath = function(url){
-            if(url.indexOf("?")){
+            if(~url.indexOf("?")){
                 url = url.slice(0, url.indexOf("?"));
             }
-            if(url.indexOf("#")){
+            if(~url.indexOf("#")){
                 url = url.slice(0, url.indexOf("#"));
             }
             if(url.indexOf("/") == 0){
