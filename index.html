@@ -2,39 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EntryWarp</title>
 </head>
 <body>
-  <script>
-      var idx = location.href;
-      var url = null;
-      if(~idx.indexOf("?id=")){
-            url = ("https://ent.ry-warp.repl.co/?id=" + idx.slice(idx.replace("//", "").indexOf("/?id=") + 7));
-      }else if(~idx.indexOf("#")){
-            url = ("https://ent.ry-warp.repl.co/?id=" + idx.slice(idx.replace("//", "").indexOf("#") + 3));
-      }else{
-            var p = document.createElement("p");
-            p.innerHTML = "잘못된 주소입니다. <a href=\"?id=61fca48e520da6002c529b0e\">https://entrywarp.github.io?id=61fca48e520da6002c529b0e</a> 형태인지 확인하세요.";
-            document.body.appendChild(p);
-            var anchor = document.querySelector("a");
-            anchor.onclick = function(){
-                 //
-            };
-      }
-      if(url != null){
+    <script>
+        var loc = location.href;
+        if(~loc.indexOf("//")){
+            var afterC = loc.slice(loc.indexOf("//") + 2);
+            var rel = afterC.slice(afterC.indexOf("/"));
+            if(rel.length <= 0){
+                rel = "/";
+            }
+            var url = "https://ent.ry-warp.repl.co" + rel;
+
             var frameset = document.createElement("frameset");
             frameset.setAttribute("rows", "*");
             var frame = document.createElement("frame");
             frame.setAttribute("frameborder", "0");
             frame.setAttribute("src", url);
             frame.setAttribute("scrolling", "auto");
-            frame.setAttribute("noresize", "auto");
-            frame.setAttribute("onerror", "console.log('loading...');");
+            frame.setAttribute("noresize", "");
             frameset.appendChild(frame);
             document.body.appendChild(frameset);
             document.body.style.margin = "0";
-      }
-  </script>
+        }
+    </script>
 </body>
 </html>
