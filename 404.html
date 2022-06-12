@@ -8,6 +8,39 @@
 </head>
 <body>
     <script>
+
+        var getSearchP = function(url){
+            if(~url.indexOf("?")){
+                return new URLSearchParams(
+                    url.slice(url.indexOf("?") + 1)
+                );
+            }
+            return new URLSearchParams();
+        };
+
+        var getPath = function(url){
+            if(url.indexOf("?")){
+                url = url.slice(0, url.indexOf("?"));
+            }
+            if(url.indexOf("#")){
+                url = url.slice(0, url.indexOf("#"));
+            }
+            if(url.indexOf("/") == 0){
+                url = url.slice(1);
+            }
+            return url;
+        };
+
+        var isHex = function(hex){
+            var hx = "0123456789abcdef", t = hex.toLowerCase();
+            for(var i = 0; i < t.length; ++i){
+                if(!~hx.indexOf(t[i])){
+                    return false;
+                }
+            }
+            return true;
+        };
+
         var loc = location.href;
         if(~loc.indexOf("//")){
             var afterC = loc.slice(loc.indexOf("//") + 2);
@@ -15,6 +48,17 @@
             if(rel.length <= 0){
                 rel = "/";
             }
+
+            var usp = getSearchP(rel), pth = getPath(rel);
+            var pID = usp.get("id") || usp.get("project") || usp.get("projectid");
+            if(pID && pID.length){
+                rel = `/${pth}?id=${pID}`;
+            }else if(!isHex(pth)){
+                rel = `/${pth}`;
+            }else{
+                rel = `/?id=${pth}`;
+            }
+
             var url = "https://ent.ry-warp.repl.co" + rel;
 
             var frameset = document.createElement("frameset");
