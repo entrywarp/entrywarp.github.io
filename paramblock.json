@@ -626,6 +626,22 @@
         false,
         false
     ],
+    "function_create": [
+        true,
+        false
+    ],
+    "function_field_label": [
+        false,
+        true
+    ],
+    "function_field_string": [
+        true,
+        true
+    ],
+    "function_field_boolean": [
+        true,
+        true
+    ],
     "set_func_variable": [
         false,
         true,
